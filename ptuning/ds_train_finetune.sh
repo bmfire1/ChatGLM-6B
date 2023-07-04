@@ -1,10 +1,11 @@
 
-LR=1e-4
+#LR=1e-4
+LR=1e-5
 
 MASTER_PORT=$(shuf -n 1 -i 10000-65535)
 
 deepspeed --num_gpus=4 --master_port $MASTER_PORT main.py \
-    --deepspeed deepspeed.json \
+    --deepspeed deepspeed_zero3_config.json \
     --do_train \
     --train_file AdvertiseGen/train.json \
     --test_file AdvertiseGen/dev.json \
